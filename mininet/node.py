@@ -731,8 +731,8 @@ class Docker ( Host ):
         if path:
             f = open(path)
             dockerstr = f.read()
-            for line in dockerstr.split('\n'):
-                words = line.split(' ')
+            for line in dockerstr.strip().split('\n'):
+                words = line.strip().split(' ')
                 if (words[0] == "FROM") and (len(words) == 2):
                     self.dimage = words[1]
                     dockerbytes = BytesIO(dockerstr.encode('utf-8'))
